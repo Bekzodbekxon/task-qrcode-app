@@ -1,7 +1,7 @@
 <template>
   <div class="home">
 
-   <div class="box ">
+   <div class="box">
      <div class="textarea__box">
        <textarea class="textarea" v-model="value" placeholder="Enter text..."></textarea>
      </div>
