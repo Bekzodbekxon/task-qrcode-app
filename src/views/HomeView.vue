@@ -6,13 +6,14 @@
        <textarea class="textarea" v-model="value" placeholder="Enter text..."></textarea>
      </div>
 
-     <div>
-       <qrcode-vue :value="value" id="canvas" :size="size" level="H"></qrcode-vue>
+     <div id="divName">
+       <qrcode-vue class="section-to-print" :value="value" id="canvas" :size="size" level="H"></qrcode-vue>
      </div>
    </div>
 <!--    <img alt="Vue logo" src="../assets/logo.png">-->
-    <div class="">
+    <div class="button__container">
       <button class="button" @click="downloadPng">Download</button>
+      <button class="button" style="margin-left: 5px" @click="print">Print</button>
     </div>
   </div>
 </template>
@@ -32,8 +33,8 @@ export default {
       size: 300,
     }
   },
-  methods:{
-    downloadPng(){
+  methods: {
+    downloadPng() {
       var canvas = document.getElementById("canvas");
 // Convert the canvas to data
       var image = canvas.toDataURL();
@@ -45,6 +46,9 @@ export default {
       aDownloadLink.href = image;
 // Get the code to click the download link
       aDownloadLink.click();
+    },
+    print() {
+    window.print()
     }
   }
 }
@@ -64,5 +68,22 @@ export default {
 }
 .textarea__box {
   margin-right: 10px;
+}
+@media print {
+  .textarea__box {
+    display: none;
+  }
+  .button__container {
+    display: none;
+  }
+  /*body {*/
+  /*  visibility: hidden;*/
+  /*}*/
+  /*#canvas {*/
+  /*  visibility: visible;*/
+  /*  width: 300px;*/
+  /*  height: 300px;*/
+
+  /*}*/
 }
 </style>
